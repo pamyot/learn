@@ -1,90 +1,93 @@
 swagger: '2.0'
 info:
-  version: V0.1
+  version: V0.2
   title: Word list management
   description: This API manages a Word list that will be part of a learning API
   contact:
     name: Pascal Amyot
     email: pascal.amyot@gmail.com
-host: "api.learn.com"
-basePath: "/V1"
+host: api.learn.com
+basePath: /V1
 schemes:
-- "https"
+  - https
 produces:
-- "application/json"
+  - application/json
 parameters:
   wordListId:
-    name: "wordListId"
-    in: "path"
-    description: "Word list ID"
+    name: wordListId
+    in: path
+    description: Word list ID
     required: true
-    type: "string"
-paths: 
+    type: integer
+    format: int64
+paths:
   /wordList:
     post:
-      description: "Create a new word list."
+      description: Create a new word list.
       parameters:
-      - name: "wordList"
-        in: "body"
-        description: "word list"
-        schema:
-          $ref: "#/definitions/WordList"
+        - name: wordList
+          in: body
+          description: word list
+          schema:
+            $ref: '#/definitions/WordList'
       responses:
-        200:
-          description: "OK"
-  /wordList/{wordListId}:
+        '200':
+          description: OK
+  '/wordList/{wordListId}':
     post:
-      description: "Update an existing word list."
+      description: Update an existing word list.
       parameters:
-      - $ref: "#/parameters/wordListId"
-      - name: "wordList"
-        in: "body"
-        description: "word list"
-        schema:
-          $ref: "#/definitions/WordList"
+        - $ref: '#/parameters/wordListId'
+        - name: wordList
+          in: body
+          description: word list
+          schema:
+            $ref: '#/definitions/WordList'
       responses:
-        200:
-          description: "OK"
-        409:
-          description: "Unable to update the word list."
-        410:
+        '200':
+          description: OK
+        '409':
+          description: Unable to update the word list.
+        '410':
           description: "Word list doesn't exists."
     get:
-      description: "Get a word list."
+      description: Get a word list.
       parameters:
-      - $ref: "#/parameters/wordListId"
+        - $ref: '#/parameters/wordListId'
       responses:
-        200:
-          description: "OK"
+        '200':
+          description: OK
           schema:
-            title: "response"
-            type: "object"
+            title: response
+            type: object
             properties:
               wordList:
-                $ref: "#/definitions/WordList"
+                $ref: '#/definitions/WordList'
     delete:
-      description: "Delete the word list.\n"
+      description: |
+        Delete the word list.
       parameters:
-      - $ref: "#/parameters/wordListId"
+        - $ref: '#/parameters/wordListId'
       responses:
-        200:
-          description: "OK"
-        409:
-          description: "Unable to update the word list."
-        410:
+        '200':
+          description: OK
+        '409':
+          description: Unable to update the word list.
+        '410':
           description: "Word list doesn't exists."
 definitions:
   Word:
-    type: "string"
-    title: "name"
+    type: string
+    title: name
   WordList:
-    type: "object"
+    type: object
     properties:
       id:
-        type: "string"
-        title: "Word list ID"
+        type: integer
+        format: int64
+        title: Word list ID
       words:
-        type: "array"
-        title: "Words"
+        type: array
+        title: Words
         items:
-          $ref: "#/definitions/Word"
+          $ref: '#/definitions/Word'

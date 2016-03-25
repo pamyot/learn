@@ -31,13 +31,5 @@
   "Role": {
     "dataSource": "db",
     "public": false
-  },
-  "swagger_V1": {
-    "dataSource": null,
-    "public": true
-  },
-  "WordList": {
-    "dataSource": "db",
-    "public": true
   }
 }
