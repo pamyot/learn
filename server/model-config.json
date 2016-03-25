@@ -31,5 +31,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "WordList": {
+    "dataSource": "learn",
+    "public": true
   }
 }

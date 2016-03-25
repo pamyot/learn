@@ -12,14 +12,6 @@ schemes:
   - https
 produces:
   - application/json
-parameters:
-  wordListId:
-    name: wordListId
-    in: path
-    description: Word list ID
-    required: true
-    type: integer
-    format: int64
 paths:
   /wordList:
     post:
@@ -33,48 +25,6 @@ paths:
       responses:
         '200':
           description: OK
-  '/wordList/{wordListId}':
-    post:
-      description: Update an existing word list.
-      parameters:
-        - $ref: '#/parameters/wordListId'
-        - name: wordList
-          in: body
-          description: word list
-          schema:
-            $ref: '#/definitions/WordList'
-      responses:
-        '200':
-          description: OK
-        '409':
-          description: Unable to update the word list.
-        '410':
-          description: "Word list doesn't exists."
-    get:
-      description: Get a word list.
-      parameters:
-        - $ref: '#/parameters/wordListId'
-      responses:
-        '200':
-          description: OK
-          schema:
-            title: response
-            type: object
-            properties:
-              wordList:
-                $ref: '#/definitions/WordList'
-    delete:
-      description: |
-        Delete the word list.
-      parameters:
-        - $ref: '#/parameters/wordListId'
-      responses:
-        '200':
-          description: OK
-        '409':
-          description: Unable to update the word list.
-        '410':
-          description: "Word list doesn't exists."
 definitions:
   Word:
     type: string

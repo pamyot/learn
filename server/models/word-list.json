@@ -1,0 +1,25 @@
+{
+  "name": "WordList",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "format": "int64",
+      "title": "Word list ID"
+    },
+    "words": {
+      "type": [
+        "string"
+      ],
+      "title": "Words"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
